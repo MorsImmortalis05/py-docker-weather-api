@@ -1,15 +1,20 @@
 import os
+from typing import Any
+
 import requests
 
 
-def validate(parameter):
-    if parameter is None:
-        raise ValueError(f"Requested data was not found in the response.")
+API_KEY = os.environ.get("API_KEY")
+FILTERING = "Paris"
+URL = f"http://api.weatherapi.com/v1/current.json?key={API_KEY}&q={FILTERING}"
 
-def get_weather():
-    API_KEY=os.environ.get("API_KEY")
-    FILTERING = "Paris"
-    URL = f"http://api.weatherapi.com/v1/current.json?key={API_KEY}&q={FILTERING}"
+
+def validate(parameter: Any) -> None:
+    if parameter is None:
+        raise ValueError("Requested data was not found in the response")
+
+
+def get_weather() -> None:
     response = requests.get(URL)
     data = response.json()
     current = data.get("current")
