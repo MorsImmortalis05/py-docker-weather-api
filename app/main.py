@@ -6,7 +6,7 @@ import requests
 
 API_KEY = os.environ.get("API_KEY")
 FILTERING = "Paris"
-URL = f"http://api.weatherapi.com/v1/current.json?key={API_KEY}&q={FILTERING}"
+URL = f"http://api.weatherapi.com/v1/current.json?key="
 
 
 def validate(parameter: Any) -> None:
@@ -15,7 +15,7 @@ def validate(parameter: Any) -> None:
 
 
 def get_weather() -> None:
-    response = requests.get(URL)
+    response = requests.get(URL + f"{API_KEY}&q={FILTERING}")
     data = response.json()
     current = data.get("current")
     validate(current)
