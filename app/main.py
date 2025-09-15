@@ -6,7 +6,7 @@ import requests
 
 API_KEY = os.environ.get("API_KEY")
 FILTERING = "Paris"
-URL = f"http://api.weatherapi.com/v1/current.json?key="
+URL = "http://api.weatherapi.com/v1/current.json?key="
 
 
 def validate(parameter: Any) -> None:
